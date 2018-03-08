@@ -1,0 +1,31 @@
+Customer Name: 
+Josh Alpert
+
+Customer Address: 
+6128
+Greenville Road
+
+Fort Worth, Tx 76182
+
+Cost        Item Number        Qty     Name     Total
+Item Number 1     Product 9     1     0.57     0.57
+
+Item Number 2     Product 10     1     2.26     2.26
+
+Item Number 3     Product 11     1     2.25     2.25
+
+Item Number 4     Product 12     1     9.10     9.10
+
+Item Number 5     Product 13     1     2.89     2.89
+
+Item Number 6     Product 14     1     9.78     9.78
+
+Item Number 7     Product 15     1     3.97     3.97
+
+Item Number 8     Product 16     1     8.66     8.66
+
+Item Number 9     Product 17     1     8.89     8.89
+
+Item Number 10     Product 18     1     0.00     0.00
+
+Total:                                         48.37

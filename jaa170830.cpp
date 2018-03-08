@@ -5,10 +5,15 @@
 
 using namespace std;
 
-const int NUM = 100;
 
 int searchArray(string ar[NUM], string productNum[NUM], string prodName[NUM], string itemCost[NUM], int count);
 
+struct itemData {
+	string productName;
+	string cost;
+	string itemNumber;
+	string quantity;
+};
 
 
 int main()
@@ -18,11 +23,9 @@ int main()
 	//NUM which is a global constant variable I declared because I know that there will
 	//always be 100 items that the customer can choose from.
 	
-	//In order for C++ to read in excel files I needed to convert all the variables to strings 
-	string productName[NUM];
-	string cost[NUM];
-	string itemNumber[NUM];
-	string quantity[NUM];
+
+
+
 
 	//Because I'm reading from the file I need to use ifStream. 
 	//File.open() is the function that opens the file and ProductData.csv
