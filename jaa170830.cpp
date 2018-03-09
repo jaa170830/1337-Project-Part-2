@@ -38,10 +38,25 @@ int main()
 	itemData *ptr;
 	string NUM;
 	getline(file, NUM, ',');
-	itemData *ptr = new itemData[stoi(NUM)];
+	int numProd = stoi(NUM);
+	itemData *ptr = new itemData[numProd];
 
+	for (int i = 0; i < numProd; i++) {
+		
+		getline(file, ptr->productName, ',');
 
+		
+		getline(file, ptr->cost, ',');
 
+		
+		getline(file, ptr->itemNumber, ',');
+
+		
+		file >> qty;
+
+	}
+
+/*
 	//When searching through each row in excel you 
 	//search through each line and seperate each column
 	//by having the program look for a comma aka the end of 
@@ -58,7 +73,7 @@ int main()
 	string qty;
 	file >> qty;
 
-	
+	*/
 	//this for loop sorts through each file up to 100 or NUM
 	for (int x = 0; x < NUM; x++)
 	{
