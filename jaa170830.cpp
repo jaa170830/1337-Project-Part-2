@@ -6,7 +6,7 @@
 using namespace std;
 
 
-int searchArray(itemData *ptr);
+int searchArray(itemData *ptr, int NUM, int counter, string product[]);
 
 struct itemData {
 	string productName;
@@ -14,7 +14,12 @@ struct itemData {
 	string itemNumber;
 	string quantity;
 };
+struct userData {
+	int productNum;
+	int qty;
 
+
+};
 
 int main()
 {
@@ -86,9 +91,10 @@ int main()
 	}
 	//now that we are done storing all the data from the file we can
 	//now close it 
+	
+
 	file.close();
-	string product[NUM];
-	int items[NUM][2];
+	userData *ptr2 = new userData[numProd];
 	int counter = 0;
 	//Now its time to loop through and actually search for the numbers that 
 	//the customers give us. I used a two dimensional array for this with one
@@ -192,62 +198,62 @@ int main()
 	//you can thank my setw skills for that one. In order for it to print out nicely on the 
 	//page I needed to have every number accounted for in regards to the quantity that 
 	//the customer chooses and the product number... I'm sorry.
-	for(int t = 0; t < counter; t++)
+	for(int t = 0; t < numProd; t++)
 	{
 		caseA = items[t][0];
 		caseB = items[t][1];
 		if (t < 10 && caseB <= 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(5)
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(5)
 				<< "" << caseB << left << setw(5) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(5) 
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(5)
 			<< "" << caseB << left << setw(5) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 		if (t < 10 && caseB > 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(4)
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(4)
 			<< "" << caseB << left << setw(5) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(4)
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(4)
 			<< "" << caseB << left << setw(5) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 		if (t > 10 && t < 98 && caseB <= 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(2) 
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(2)
 			<< "" << caseB << left << setw(4) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(2) 
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(2)
 			<< "" << caseB << left << setw(4) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 		if (t > 10 && t < 98 && caseB > 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(3) 
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(3)
 			<< "" << caseB << left << setw(4) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(3) 
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(3)
 			<< "" << caseB << left << setw(4) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 		if (t > 98 && caseB > 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(2)
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(2)
 				<< "" << caseB << left << setw(2) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(2) 
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(2)
 			<< "" << caseB << left << setw(2) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 		if (t > 98 && caseB <= 10)
 		{
-			cout << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(1) 
+			cout << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(1)
 			<< "" << caseB << left << setw(2) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 			cout << "----------------------------------------------------" << endl << endl;
 
-			output << "Item Number " << t + 1 << left << setw(5) << "" << productName[caseA] << left << setw(1)
+			output << "Item Number " << t + 1 << left << setw(5) << "" << ptr[t].productName[caseA] << left << setw(1)
 				<< "" << caseB << left << setw(2) << "" << cost[caseA] << left << setw(5) << "" << (stod(cost[caseA])*(caseB)) << endl << endl;
 		}
 
@@ -261,7 +267,7 @@ int main()
 	return 0;
 }
 //This is the first function to help search for the product that the customer is looking for
-int searchArray(itemData *ptr)
+int searchArray(itemData *ptr, int NUM, int counter, string product[])
 {
 	//this for loop loops through all the numbers in the item number list and sees
 	//if the item number that the customer entered was in the database
@@ -272,9 +278,9 @@ int searchArray(itemData *ptr)
 		//not all the variables in the database were strings so professor 
 		//McMahan told us to use stoi() in order to change the string back to 
 		//an integer data type.
-		if (stoi(productNum[count]) == stoi(ar[i]))
+		if (stoi(product[counter]) == stoi(ptr[i].itemNumber))
 		{
-			cout << prodName[i] << setw(4) << " " << itemCost[i] << endl;
+			cout << ptr[i].productName << setw(4) << " " << ptr[i].cost << endl;
 			return i;
 		}
 	}
