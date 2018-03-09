@@ -17,8 +17,8 @@ struct itemData {
 struct userData {
 	int productNum;
 	int qty;
-
-
+	string prodName;
+	double cost;
 };
 
 int main()
@@ -45,6 +45,12 @@ int main()
 	getline(file, NUM, ',');
 	int numProd = stoi(NUM);
 	itemData *ptr = new itemData[numProd];
+	string itemNum, nameOfProd, qty, costOfProd;
+
+	getline(file, itemNum, ',');
+	getline(file, nameOfProd, ',');
+	getline(file, qty, ',');
+	getline(file, costOfProd, ',');
 
 	for (int i = 0; i < numProd; i++) {
 		
@@ -82,13 +88,7 @@ int main()
 
 	*/
 	//this for loop sorts through each file up to 100 or NUM
-	for (int x = 0; x < NUM; x++)
-	{
-		getline(file, itemNumber[x], ',');
-		getline(file, productName[x], ',');
-		getline(file, cost[x], ',');
-		file >> quantity[x];
-	}
+	
 	//now that we are done storing all the data from the file we can
 	//now close it 
 	
@@ -103,14 +103,14 @@ int main()
 	{
 		
 		cout << "What product would you like? (Enter 0 when done choosing products)" << endl;
-		cin >> product[x];
+		cin >> ptr2[x].productNum;
 
-		if (product[x] == "0")
+		if (ptr2[x].productNum == 0)
 		{
 			break;
 		}
-		items[x][0] = searchArray(itemNumber, product, productName, cost, x);// incorperating my search function
-		if (items[x][0] == -1)//nothing should be in the 0th column
+		int index = searchArray(itemNumber, product, productName, cost, x);// incorperating my search function
+		if (index == -1)//nothing should be in the 0th column
 		{
 			cout << "That product isn't in the database" << endl;
 			x--;
@@ -118,20 +118,20 @@ int main()
 		else
 		{
 			cout << "How many of the product would you like?  ";
-			cin >> items[x][1];
-			if (items[x][1] > stoi(quantity[items[x][0]]))
+			cin >> ptr2[x].qty;
+			if (ptr2[x].qty > stoi(ptr[index].quantity))
 			{
-				while (items[x][1] > stoi(quantity[items[x][0]]))//customer enters a number greater than the quantity
+				while (ptr2[x].qty > stoi(ptr[index].quantity))//customer enters a number greater than the quantity
 				{
 					cout << "There are not enough of it in stock." << endl;
-					if (items[x][1] == 0)
+					if (ptr2[x].qty == 0)
 					{
 						cout << "We are out of stock! Sorry:(" << endl;//if the quantity is 0 then the product is out of stock
 						break;
 					}
 					//even if they enter a wrong quantity we still need to ask them again rather than giving up on them;)
 						cout << "How many of the product would you like?";
-					cin >> items[x][1];
+					cin >> ptr2[x].qty;
 				}
 			}
 			counter++;
