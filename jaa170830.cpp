@@ -6,7 +6,7 @@
 using namespace std;
 
 
-int searchArray(string ar[NUM], string productNum[NUM], string prodName[NUM], string itemCost[NUM], int count);
+int searchArray(itemData *ptr);
 
 struct itemData {
 	string productName;
@@ -23,8 +23,10 @@ int main()
 	//NUM which is a global constant variable I declared because I know that there will
 	//always be 100 items that the customer can choose from.
 	
+	
 
-
+	
+	
 
 
 	//Because I'm reading from the file I need to use ifStream. 
@@ -32,6 +34,13 @@ int main()
 	//is the excel file that the program is reading from
 	ifstream file;
 	file.open("ProductData.csv");
+
+	itemData *ptr;
+	string NUM;
+	getline(file, NUM, ',');
+	itemData *ptr = new itemData[stoi(NUM)];
+
+
 
 	//When searching through each row in excel you 
 	//search through each line and seperate each column
@@ -235,7 +244,7 @@ int main()
 	return 0;
 }
 //This is the first function to help search for the product that the customer is looking for
-int searchArray(string ar[NUM], string productNum[NUM], string prodName[NUM], string itemCost[NUM], int count)
+int searchArray(itemData *ptr)
 {
 	//this for loop loops through all the numbers in the item number list and sees
 	//if the item number that the customer entered was in the database
