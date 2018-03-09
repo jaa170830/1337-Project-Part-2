@@ -43,18 +43,20 @@ int main()
 
 	for (int i = 0; i < numProd; i++) {
 		
-		getline(file, ptr->productName, ',');
+		getline(file, ptr[i].productName, ',');
 
 		
-		getline(file, ptr->cost, ',');
+		getline(file, ptr[i].cost, ',');
 
 		
-		getline(file, ptr->itemNumber, ',');
+		getline(file, ptr[i].itemNumber, ',');
 
 		
-		file >> qty;
+		getline(file, ptr[i].quantity, ',');
 
 	}
+
+
 
 /*
 	//When searching through each row in excel you 
